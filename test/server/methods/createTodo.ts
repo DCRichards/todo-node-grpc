@@ -1,8 +1,8 @@
 import 'mocha';
 import { assert, expect } from 'chai';
 import { credentials } from 'grpc';
-import { TodoClient } from '../../src/gen/todo_grpc_pb';
-import { CreateBody, TodoResponse } from '../../src/gen/todo_pb';
+import { TodoClient } from '../../../src/gen/todo_grpc_pb';
+import { CreateBody, TodoResponse } from '../../../src/gen/todo_pb';
 
 /**
  * Wrapper function to allow us to get a typed response as well as use await.

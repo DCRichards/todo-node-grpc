@@ -1,5 +1,5 @@
 import grpc from 'grpc';
-import { CreateBody, TodoResponse } from '../gen/todo_pb';
+import { CreateBody, TodoResponse } from '../../gen/todo_pb';
 
 export function createTodo(
   call: grpc.ServerUnaryCall<CreateBody>,

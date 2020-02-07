@@ -1,13 +1,16 @@
 import 'mocha';
 import dotenv from 'dotenv';
-import server from '../src';
+import GRPCServer from '../src/server';
 
 dotenv.config();
+
+const { HOST, PORT } = process.env;
+const server = new GRPCServer({ host: HOST, port: PORT });
 
 before(() => {
   server.start();
 });
 
 after(() => {
-  server.forceShutdown();
+  server.stop();
 });
