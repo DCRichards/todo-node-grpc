@@ -1,9 +1,9 @@
-import grpc from 'grpc';
+import { ServerUnaryCall, sendUnaryData } from 'grpc';
 import { CreateBody, TodoResponse } from '../../gen/todo_pb';
 
 export function createTodo(
-  call: grpc.ServerUnaryCall<CreateBody>,
-  cb: grpc.sendUnaryData<TodoResponse>,
+  call: ServerUnaryCall<CreateBody>,
+  cb: sendUnaryData<TodoResponse>,
 ) : void {
   const req = call.request.toObject();
 

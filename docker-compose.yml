@@ -11,3 +11,17 @@ services:
       - ./.env:/usr/src/app/.env
     ports:
       - 8081:8000
+    depends_on:
+      - db
+
+  db:
+    image: postgres:12
+    environment:
+      - POSTGRES_DB=dev
+      - POSTGRES_USER=dev
+      - "POSTGRES_PASSWORD=E3aGW6Ju#yu3LTyC"
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+
+volumes:
+  pg-data:

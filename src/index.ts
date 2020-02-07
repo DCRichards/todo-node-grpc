@@ -1,9 +1,11 @@
-import dotenv from 'dotenv';
+import { config } from 'dotenv';
 import GRPCServer from './server';
+import Postgres from './persistence/Postgres';
 
-dotenv.config();
+config();
 
-const { HOST, PORT } = process.env;
-const server = new GRPCServer({ host: HOST, port: PORT });
+const { HOST, PORT, DB_CONNECTION_STRING } = process.env;
+const db = new Postgres({ connectionString: DB_CONNECTION_STRING! });
+const server = new GRPCServer({ host: HOST, port: PORT, db });
 
 server.start();
