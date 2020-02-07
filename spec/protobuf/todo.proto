@@ -1,0 +1,48 @@
+syntax = 'proto3';
+
+package todo;
+
+service Todo {
+  rpc CreateTodo(CreateBody) returns (TodoResponse);
+  rpc GetTodo(QueryBody) returns (TodoResponse);
+  rpc UpdateTodo(UpdateBody) returns (TodoResponse);
+  rpc DeleteTodo(QueryBody) returns (Empty);
+}
+
+message CreateBody {
+  message Todo {
+    string title = 1;
+    bool completed = 2;
+  }
+
+  Todo todo = 1;
+}
+
+message QueryBody {
+  message Query {
+    string id = 1;
+  }
+
+  Query query = 1;
+}
+
+message UpdateBody {
+  message Todo {
+    string title = 1;
+    string completed = 2;
+  }
+
+  Todo todo = 1;
+}
+
+message TodoResponse {
+  message Todo {
+    string id = 1;
+    string title = 2;
+    bool completed = 3;
+  }
+
+  Todo todo = 1;
+}
+
+message Empty {}

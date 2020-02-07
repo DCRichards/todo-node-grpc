@@ -1,0 +1,10 @@
+{
+  "env": {
+    "mocha": true
+  },
+  "extends": ["airbnb-typescript/base"],
+  "ignorePatterns": ["node_modules", "dist", "src/gen"],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "root": true
+}
