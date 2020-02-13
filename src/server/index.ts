@@ -1,12 +1,11 @@
 import { Server, ServerCredentials } from 'grpc';
-import { TodoService } from '../gen/todo_grpc_pb';
-import Persistence from '../persistence';
-import * as service from './methods';
+import { TodoService as TodoGgpcService } from '../gen/todo_grpc_pb';
+import * as methods from './methods';
 
-interface Config {
+export interface Config {
   host?: string;
   port?: string;
-  db: Persistence;
+  todoService: TodoService;
 }
 
 /**
@@ -15,13 +14,17 @@ interface Config {
 export default class GRPCServer {
   private server: Server;
 
-  private db: Persistence;
-
-  constructor({ host = '0.0.0.0', port = '8080', db }: Config) {
+  constructor({ host = '0.0.0.0', port = '8080' }: Config) {
     this.server = new Server();
-    this.server.addService(TodoService, service);
+
+    this.server.addService(TodoGgpcService, {
+      getTodo: methods.get(),
+      createTodo: methods.create(),
+      updateTodo: methods.update(),
+      deleteTodo: methods.remove(),
+    });
+
     this.server.bind(`${host}:${port}`, ServerCredentials.createInsecure());
-    this.db = db;
   }
 
   /**

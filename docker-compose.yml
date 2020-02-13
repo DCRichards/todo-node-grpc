@@ -1,4 +1,5 @@
 version: "3.7"
+
 services:
   server:
     build: .
@@ -8,7 +9,8 @@ services:
       - ./src:/usr/src/app/src
       - ./spec:/usr/src/app/spec
       - ./test:/usr/src/app/test
-      - ./.env:/usr/src/app/.env
+    env_file:
+      - ./.env
     ports:
       - 8081:8000
     depends_on:
@@ -16,10 +18,8 @@ services:
 
   db:
     image: postgres:12
-    environment:
-      - POSTGRES_DB=dev
-      - POSTGRES_USER=dev
-      - "POSTGRES_PASSWORD=E3aGW6Ju#yu3LTyC"
+    env_file:
+      - ./.env
     volumes:
       - pg-data:/var/lib/postgresql/data
 
