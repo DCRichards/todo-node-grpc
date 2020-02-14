@@ -1,11 +1,12 @@
 {
-  "name": "node-server-example",
+  "name": "todo-node-grpc",
   "version": "0.1.0",
-  "main": "src/index.js",
   "author": "DCRichards",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint . --ext .js,.ts",
+    "lint:js": "eslint . --ext .js,.ts",
+    "lint:proto": "buf check lint --error-format=json",
+    "lint": "yarn lint:js && yarn lint:proto",
     "protoc:js": "grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./src/gen --grpc_out=./src/gen -I ./spec/protobuf ./spec/protobuf/*.proto",
     "protoc:ts": "grpc_tools_node_protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --ts_out=./src/gen -I ./spec/protobuf ./spec/protobuf/*.proto",
     "protoc": "yarn run protoc:js && yarn run protoc:ts",

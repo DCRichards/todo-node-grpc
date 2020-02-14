@@ -1,0 +1,9 @@
+build:
+  roots:
+    - spec/protobuf
+lint:
+  use:
+    - DEFAULT
+  except:
+    # Not needed for small project.
+    - PACKAGE_DIRECTORY_MATCH

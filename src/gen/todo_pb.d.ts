@@ -1,4 +1,4 @@
-// package: todo
+// package: todo.v1
 // file: todo.proto
 
 /* tslint:disable */
@@ -6,223 +6,262 @@
 
 import * as jspb from "google-protobuf";
 
-export class CreateBody extends jspb.Message { 
+export class Todo extends jspb.Message { 
+    getId(): string;
+    setId(value: string): void;
+
+    getTitle(): string;
+    setTitle(value: string): void;
+
+    getCompleted(): boolean;
+    setCompleted(value: boolean): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): Todo.AsObject;
+    static toObject(includeInstance: boolean, msg: Todo): Todo.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: Todo, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): Todo;
+    static deserializeBinaryFromReader(message: Todo, reader: jspb.BinaryReader): Todo;
+}
+
+export namespace Todo {
+    export type AsObject = {
+        id: string,
+        title: string,
+        completed: boolean,
+    }
+}
+
+export class ListTodosRequest extends jspb.Message { 
+    getPageSize(): number;
+    setPageSize(value: number): void;
+
+    getPageToken(): number;
+    setPageToken(value: number): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListTodosRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: ListTodosRequest): ListTodosRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListTodosRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListTodosRequest;
+    static deserializeBinaryFromReader(message: ListTodosRequest, reader: jspb.BinaryReader): ListTodosRequest;
+}
+
+export namespace ListTodosRequest {
+    export type AsObject = {
+        pageSize: number,
+        pageToken: number,
+    }
+}
+
+export class ListTodosResponse extends jspb.Message { 
+    clearTodoList(): void;
+    getTodoList(): Array<Todo>;
+    setTodoList(value: Array<Todo>): void;
+    addTodo(value?: Todo, index?: number): Todo;
+
+    getNextPageToken(): string;
+    setNextPageToken(value: string): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): ListTodosResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: ListTodosResponse): ListTodosResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: ListTodosResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): ListTodosResponse;
+    static deserializeBinaryFromReader(message: ListTodosResponse, reader: jspb.BinaryReader): ListTodosResponse;
+}
+
+export namespace ListTodosResponse {
+    export type AsObject = {
+        todoList: Array<Todo.AsObject>,
+        nextPageToken: string,
+    }
+}
+
+export class GetTodoByIdRequest extends jspb.Message { 
+    getId(): string;
+    setId(value: string): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): GetTodoByIdRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: GetTodoByIdRequest): GetTodoByIdRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: GetTodoByIdRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetTodoByIdRequest;
+    static deserializeBinaryFromReader(message: GetTodoByIdRequest, reader: jspb.BinaryReader): GetTodoByIdRequest;
+}
+
+export namespace GetTodoByIdRequest {
+    export type AsObject = {
+        id: string,
+    }
+}
+
+export class GetTodoByIdResponse extends jspb.Message { 
 
     hasTodo(): boolean;
     clearTodo(): void;
-    getTodo(): CreateBody.Todo | undefined;
-    setTodo(value?: CreateBody.Todo): void;
+    getTodo(): Todo | undefined;
+    setTodo(value?: Todo): void;
 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): CreateBody.AsObject;
-    static toObject(includeInstance: boolean, msg: CreateBody): CreateBody.AsObject;
+    toObject(includeInstance?: boolean): GetTodoByIdResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: GetTodoByIdResponse): GetTodoByIdResponse.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: CreateBody, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): CreateBody;
-    static deserializeBinaryFromReader(message: CreateBody, reader: jspb.BinaryReader): CreateBody;
+    static serializeBinaryToWriter(message: GetTodoByIdResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): GetTodoByIdResponse;
+    static deserializeBinaryFromReader(message: GetTodoByIdResponse, reader: jspb.BinaryReader): GetTodoByIdResponse;
 }
 
-export namespace CreateBody {
+export namespace GetTodoByIdResponse {
     export type AsObject = {
-        todo?: CreateBody.Todo.AsObject,
+        todo?: Todo.AsObject,
     }
-
-
-    export class Todo extends jspb.Message { 
-        getTitle(): string;
-        setTitle(value: string): void;
-
-        getCompleted(): boolean;
-        setCompleted(value: boolean): void;
-
-
-        serializeBinary(): Uint8Array;
-        toObject(includeInstance?: boolean): Todo.AsObject;
-        static toObject(includeInstance: boolean, msg: Todo): Todo.AsObject;
-        static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-        static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-        static serializeBinaryToWriter(message: Todo, writer: jspb.BinaryWriter): void;
-        static deserializeBinary(bytes: Uint8Array): Todo;
-        static deserializeBinaryFromReader(message: Todo, reader: jspb.BinaryReader): Todo;
-    }
-
-    export namespace Todo {
-        export type AsObject = {
-            title: string,
-            completed: boolean,
-        }
-    }
-
 }
 
-export class QueryBody extends jspb.Message { 
-
-    hasQuery(): boolean;
-    clearQuery(): void;
-    getQuery(): QueryBody.Query | undefined;
-    setQuery(value?: QueryBody.Query): void;
-
-
-    serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): QueryBody.AsObject;
-    static toObject(includeInstance: boolean, msg: QueryBody): QueryBody.AsObject;
-    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: QueryBody, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): QueryBody;
-    static deserializeBinaryFromReader(message: QueryBody, reader: jspb.BinaryReader): QueryBody;
-}
-
-export namespace QueryBody {
-    export type AsObject = {
-        query?: QueryBody.Query.AsObject,
-    }
-
-
-    export class Query extends jspb.Message { 
-        getId(): string;
-        setId(value: string): void;
-
-
-        serializeBinary(): Uint8Array;
-        toObject(includeInstance?: boolean): Query.AsObject;
-        static toObject(includeInstance: boolean, msg: Query): Query.AsObject;
-        static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-        static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-        static serializeBinaryToWriter(message: Query, writer: jspb.BinaryWriter): void;
-        static deserializeBinary(bytes: Uint8Array): Query;
-        static deserializeBinaryFromReader(message: Query, reader: jspb.BinaryReader): Query;
-    }
-
-    export namespace Query {
-        export type AsObject = {
-            id: string,
-        }
-    }
-
-}
-
-export class UpdateBody extends jspb.Message { 
+export class CreateTodoRequest extends jspb.Message { 
 
     hasTodo(): boolean;
     clearTodo(): void;
-    getTodo(): UpdateBody.Todo | undefined;
-    setTodo(value?: UpdateBody.Todo): void;
+    getTodo(): Todo | undefined;
+    setTodo(value?: Todo): void;
 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): UpdateBody.AsObject;
-    static toObject(includeInstance: boolean, msg: UpdateBody): UpdateBody.AsObject;
+    toObject(includeInstance?: boolean): CreateTodoRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: CreateTodoRequest): CreateTodoRequest.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: UpdateBody, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): UpdateBody;
-    static deserializeBinaryFromReader(message: UpdateBody, reader: jspb.BinaryReader): UpdateBody;
+    static serializeBinaryToWriter(message: CreateTodoRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CreateTodoRequest;
+    static deserializeBinaryFromReader(message: CreateTodoRequest, reader: jspb.BinaryReader): CreateTodoRequest;
 }
 
-export namespace UpdateBody {
+export namespace CreateTodoRequest {
     export type AsObject = {
-        todo?: UpdateBody.Todo.AsObject,
+        todo?: Todo.AsObject,
     }
-
-
-    export class Todo extends jspb.Message { 
-        getTitle(): string;
-        setTitle(value: string): void;
-
-        getCompleted(): string;
-        setCompleted(value: string): void;
-
-
-        serializeBinary(): Uint8Array;
-        toObject(includeInstance?: boolean): Todo.AsObject;
-        static toObject(includeInstance: boolean, msg: Todo): Todo.AsObject;
-        static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-        static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-        static serializeBinaryToWriter(message: Todo, writer: jspb.BinaryWriter): void;
-        static deserializeBinary(bytes: Uint8Array): Todo;
-        static deserializeBinaryFromReader(message: Todo, reader: jspb.BinaryReader): Todo;
-    }
-
-    export namespace Todo {
-        export type AsObject = {
-            title: string,
-            completed: string,
-        }
-    }
-
 }
 
-export class TodoResponse extends jspb.Message { 
+export class CreateTodoResponse extends jspb.Message { 
 
     hasTodo(): boolean;
     clearTodo(): void;
-    getTodo(): TodoResponse.Todo | undefined;
-    setTodo(value?: TodoResponse.Todo): void;
+    getTodo(): Todo | undefined;
+    setTodo(value?: Todo): void;
 
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): TodoResponse.AsObject;
-    static toObject(includeInstance: boolean, msg: TodoResponse): TodoResponse.AsObject;
+    toObject(includeInstance?: boolean): CreateTodoResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: CreateTodoResponse): CreateTodoResponse.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: TodoResponse, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): TodoResponse;
-    static deserializeBinaryFromReader(message: TodoResponse, reader: jspb.BinaryReader): TodoResponse;
+    static serializeBinaryToWriter(message: CreateTodoResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): CreateTodoResponse;
+    static deserializeBinaryFromReader(message: CreateTodoResponse, reader: jspb.BinaryReader): CreateTodoResponse;
 }
 
-export namespace TodoResponse {
+export namespace CreateTodoResponse {
     export type AsObject = {
-        todo?: TodoResponse.Todo.AsObject,
+        todo?: Todo.AsObject,
     }
-
-
-    export class Todo extends jspb.Message { 
-        getId(): string;
-        setId(value: string): void;
-
-        getTitle(): string;
-        setTitle(value: string): void;
-
-        getCompleted(): boolean;
-        setCompleted(value: boolean): void;
-
-
-        serializeBinary(): Uint8Array;
-        toObject(includeInstance?: boolean): Todo.AsObject;
-        static toObject(includeInstance: boolean, msg: Todo): Todo.AsObject;
-        static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
-        static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-        static serializeBinaryToWriter(message: Todo, writer: jspb.BinaryWriter): void;
-        static deserializeBinary(bytes: Uint8Array): Todo;
-        static deserializeBinaryFromReader(message: Todo, reader: jspb.BinaryReader): Todo;
-    }
-
-    export namespace Todo {
-        export type AsObject = {
-            id: string,
-            title: string,
-            completed: boolean,
-        }
-    }
-
 }
 
-export class Empty extends jspb.Message { 
+export class UpdateTodoRequest extends jspb.Message { 
+
+    hasTodo(): boolean;
+    clearTodo(): void;
+    getTodo(): Todo | undefined;
+    setTodo(value?: Todo): void;
+
 
     serializeBinary(): Uint8Array;
-    toObject(includeInstance?: boolean): Empty.AsObject;
-    static toObject(includeInstance: boolean, msg: Empty): Empty.AsObject;
+    toObject(includeInstance?: boolean): UpdateTodoRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: UpdateTodoRequest): UpdateTodoRequest.AsObject;
     static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
     static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
-    static serializeBinaryToWriter(message: Empty, writer: jspb.BinaryWriter): void;
-    static deserializeBinary(bytes: Uint8Array): Empty;
-    static deserializeBinaryFromReader(message: Empty, reader: jspb.BinaryReader): Empty;
+    static serializeBinaryToWriter(message: UpdateTodoRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UpdateTodoRequest;
+    static deserializeBinaryFromReader(message: UpdateTodoRequest, reader: jspb.BinaryReader): UpdateTodoRequest;
 }
 
-export namespace Empty {
+export namespace UpdateTodoRequest {
+    export type AsObject = {
+        todo?: Todo.AsObject,
+    }
+}
+
+export class UpdateTodoResponse extends jspb.Message { 
+
+    hasTodo(): boolean;
+    clearTodo(): void;
+    getTodo(): Todo | undefined;
+    setTodo(value?: Todo): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): UpdateTodoResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: UpdateTodoResponse): UpdateTodoResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: UpdateTodoResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): UpdateTodoResponse;
+    static deserializeBinaryFromReader(message: UpdateTodoResponse, reader: jspb.BinaryReader): UpdateTodoResponse;
+}
+
+export namespace UpdateTodoResponse {
+    export type AsObject = {
+        todo?: Todo.AsObject,
+    }
+}
+
+export class DeleteTodoRequest extends jspb.Message { 
+    getId(): string;
+    setId(value: string): void;
+
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): DeleteTodoRequest.AsObject;
+    static toObject(includeInstance: boolean, msg: DeleteTodoRequest): DeleteTodoRequest.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: DeleteTodoRequest, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): DeleteTodoRequest;
+    static deserializeBinaryFromReader(message: DeleteTodoRequest, reader: jspb.BinaryReader): DeleteTodoRequest;
+}
+
+export namespace DeleteTodoRequest {
+    export type AsObject = {
+        id: string,
+    }
+}
+
+export class DeleteTodoResponse extends jspb.Message { 
+
+    serializeBinary(): Uint8Array;
+    toObject(includeInstance?: boolean): DeleteTodoResponse.AsObject;
+    static toObject(includeInstance: boolean, msg: DeleteTodoResponse): DeleteTodoResponse.AsObject;
+    static extensions: {[key: number]: jspb.ExtensionFieldInfo<jspb.Message>};
+    static extensionsBinary: {[key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>};
+    static serializeBinaryToWriter(message: DeleteTodoResponse, writer: jspb.BinaryWriter): void;
+    static deserializeBinary(bytes: Uint8Array): DeleteTodoResponse;
+    static deserializeBinaryFromReader(message: DeleteTodoResponse, reader: jspb.BinaryReader): DeleteTodoResponse;
+}
+
+export namespace DeleteTodoResponse {
     export type AsObject = {
     }
 }

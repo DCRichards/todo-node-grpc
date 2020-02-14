@@ -1,48 +1,59 @@
 syntax = 'proto3';
 
-package todo;
+package todo.v1;
 
-service Todo {
-  rpc CreateTodo(CreateBody) returns (TodoResponse);
-  rpc GetTodo(QueryBody) returns (TodoResponse);
-  rpc UpdateTodo(UpdateBody) returns (TodoResponse);
-  rpc DeleteTodo(QueryBody) returns (Empty);
+service TodoService {
+  // ListTodos follows the standard pagination recommended in
+  // https://cloud.google.com/apis/design/design_patterns#list_pagination
+  rpc ListTodos(ListTodosRequest) returns (ListTodosResponse);
+  rpc GetTodoById(GetTodoByIdRequest) returns (GetTodoByIdResponse);
+  rpc CreateTodo(CreateTodoRequest) returns (CreateTodoResponse);
+  rpc UpdateTodo(UpdateTodoRequest) returns (UpdateTodoResponse);
+  rpc DeleteTodo(DeleteTodoRequest) returns (DeleteTodoResponse);
 }
 
-message CreateBody {
-  message Todo {
-    string title = 1;
-    bool completed = 2;
-  }
+message Todo {
+  string id = 1;
+  string title = 2;
+  bool completed = 3;
+}
 
+message ListTodosRequest {
+  int32 page_size = 1;
+  int32 page_token = 2;
+}
+
+message ListTodosResponse {
+  repeated Todo todo = 1;
+  string next_page_token = 2;
+}
+
+message GetTodoByIdRequest {
+  string id = 1;
+}
+
+message GetTodoByIdResponse {
   Todo todo = 1;
 }
 
-message QueryBody {
-  message Query {
-    string id = 1;
-  }
-
-  Query query = 1;
-}
-
-message UpdateBody {
-  message Todo {
-    string title = 1;
-    string completed = 2;
-  }
-
+message CreateTodoRequest {
   Todo todo = 1;
 }
 
-message TodoResponse {
-  message Todo {
-    string id = 1;
-    string title = 2;
-    bool completed = 3;
-  }
-
+message CreateTodoResponse {
   Todo todo = 1;
 }
 
-message Empty {}
+message UpdateTodoRequest {
+  Todo todo = 1;
+}
+
+message UpdateTodoResponse {
+  Todo todo = 1;
+}
+
+message DeleteTodoRequest {
+  string id = 1;
+}
+
+message DeleteTodoResponse {}

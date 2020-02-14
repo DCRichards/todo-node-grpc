@@ -1,5 +1,6 @@
 import { Server, ServerCredentials } from 'grpc';
-import { TodoService as TodoGgpcService } from '../gen/todo_grpc_pb';
+import { TodoServiceService as TodoGgpcService } from '../gen/todo_grpc_pb';
+import TodoService from '../services/TodoService';
 import * as methods from './methods';
 
 export interface Config {
@@ -18,10 +19,11 @@ export default class GRPCServer {
     this.server = new Server();
 
     this.server.addService(TodoGgpcService, {
-      getTodo: methods.get(),
-      createTodo: methods.create(),
-      updateTodo: methods.update(),
-      deleteTodo: methods.remove(),
+      listTodos: methods.listTodos(),
+      getTodoById: methods.getTodoById(),
+      createTodo: methods.createTodo(),
+      updateTodo: methods.updateTodo(),
+      deleteTodo: methods.deleteTodo(),
     });
 
     this.server.bind(`${host}:${port}`, ServerCredentials.createInsecure());

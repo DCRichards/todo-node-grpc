@@ -1,15 +1,19 @@
 import { ServerUnaryCall, sendUnaryData } from 'grpc';
-import { CreateBody, TodoResponse } from '../../gen/todo_pb';
+import { CreateTodoRequest, CreateTodoResponse, Todo } from '../../gen/todo_pb';
 
 export type Call<T> = ServerUnaryCall<T>;
 export type Callback<T> = sendUnaryData<T>;
 export type Handler<T, U> = (call: Call<T>, cb: Callback<U>) => void;
 
-export function get() : () => void {
+export function listTodos() : () => void {
   return () => {};
 }
 
-export function create() : Handler<CreateBody, TodoResponse> {
+export function getTodoById() : () => void {
+  return () => {};
+}
+
+export function createTodo() : Handler<CreateTodoRequest, CreateTodoResponse> {
   return (call, cb) => {
     const req = call.request.toObject();
 
@@ -23,8 +27,8 @@ export function create() : Handler<CreateBody, TodoResponse> {
       return;
     }
 
-    const res = new TodoResponse();
-    const todo = new TodoResponse.Todo();
+    const res = new CreateTodoResponse();
+    const todo = new Todo();
 
     todo.setId('1');
     todo.setTitle(req.todo.title);
@@ -35,10 +39,10 @@ export function create() : Handler<CreateBody, TodoResponse> {
   };
 }
 
-export function update() : () => void {
+export function updateTodo() : () => void {
   return () => {};
 }
 
-export function remove() : () => void {
+export function deleteTodo() : () => void {
   return () => {};
 }
